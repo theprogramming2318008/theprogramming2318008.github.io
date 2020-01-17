@@ -1,0 +1,25 @@
+<html style="background-color: #000000">
+<head>
+  <title>Riddle Stage 3</title>
+  <meta charset="utf-8">
+  
+</head>
+<body>
+<center><img src="riddle03.png"></center>
+<center>
+<script>
+function changeImage()
+{
+    element=document.getElementById('myimage')
+    if (element.src.match("bulbon"))
+    {
+        element.src="riddles3.png";
+    }
+    else
+    {
+        element.src="fake.png";
+    }
+}
+</script>
+<img id="myimage" onclick="changeImage()" src="/riddles3.png">
+</html>

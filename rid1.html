@@ -1,0 +1,44 @@
+<html style="background-color: #000000">
+<head>
+  <title>Riddle Stage 1</title>
+  <meta charset="utf-8">
+  <style>
+    #myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #444;
+}
+  </style>
+</head>
+<body>
+<center><img src="riddle01.png"></center>
+<script>
+function move() {
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+      window.location.href="rid2.html";
+    } else {
+      width+=0.00001; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+</script>
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+<br>
+<center>
+<button onclick="move()">点我过关</button>
+</body>
+</html>
