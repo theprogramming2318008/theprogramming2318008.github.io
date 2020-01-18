@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/css/mdui.min.css">
+    <title>管理页面</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body class="mdui-theme-accent-light-blue mdui-theme-primary-light-blue">
+    <div class="mdui-container">
+        <h1>添加页面</h1>
+        <div class="mdui-textfield mdui-textfield-floating-label">
+            <label class="mdui-textfield-label">
+                页面名称
+            </label>
+            <input id="textbox" class="mdui-textfield-input" type="name" />
+        </div>
+
+        <button id="submit" onclick="javascript:;" style="margin-top: 10px;"
+            class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent">
+            提交
+        </button>
+        <div id="codebox">
+            <h1>请添加以下代码到你的网页中</h1>
+            <code id="code"></code>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/js/mdui.min.js"></script>
+    <script>
+        $("#submit").on("click", () => {
+            $.ajax({
+                method: 'GET',
+                url: "http://localhost:1438/api/v1/page/add.php?name=" + $("#textbox").val(),
+                success: () => {
+                    var text =
+                        '<script>' +
+                        '    $.ajax({' +
+                        '        method: "GET",' +
+                        '        url: "http://localhost:1438/api/v1/get_visiter.php?name=' + $("#textbox").val() + '",' +
+                        '        success: (response) => {' +
+                        '            let data = JSON.parse(response);' +
+                        '            $("#person").text(data.count);' +
+                        '        }' +
+                        '    });' +
+                        '<\/script>';
+                    document.getElementById("code").innerText = text;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
