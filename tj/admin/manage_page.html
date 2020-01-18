@@ -34,13 +34,13 @@
         $("#submit").on("click", () => {
             $.ajax({
                 method: 'GET',
-                url: "http://localhost:1438/api/v1/page/add.php?name=" + $("#textbox").val(),
+                url: "https://theprogramming2318008.github.io/api/v1/page/add.php?name=" + $("#textbox").val(),
                 success: () => {
                     var text =
                         '<script>' +
                         '    $.ajax({' +
                         '        method: "GET",' +
-                        '        url: "http://localhost:1438/api/v1/get_visiter.php?name=' + $("#textbox").val() + '",' +
+                        '        url: "https://theprogramming2318008.github.io/api/v1/get_visiter.php?name=' + $("#textbox").val() + '",' +
                         '        success: (response) => {' +
                         '            let data = JSON.parse(response);' +
                         '            $("#person").text(data.count);' +
